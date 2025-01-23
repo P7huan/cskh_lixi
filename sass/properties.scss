@@ -1,0 +1,91 @@
+$color_page:        	#387cde;
+$color_page_1:   			#1e82c0;
+$color_page_2:   			#f5f8fa;
+$color_page_bg:   		#f2f3f9;
+$color_text:        	#2f3236;
+$color_text_1:      	#6a6f82;
+$color_a:           	$color_page;
+$color_a_hover:     	#000;
+$color_menu:        	#E3E3E3;
+$color_menu_hover:  	$color_page_2;
+$color_menu_hover_1:	$color_page_2;
+$color_menu_active: 	$color_page_2;
+$color_menu_active_1:	$color_page_2;
+$color_heading: 			$color_page_1;
+$highlight:           $color_page;
+
+%overlay {
+	&:before, &:after {
+		display: block;
+		content: '';
+		position: absolute;
+		opacity: 0;
+		top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+		transition: opacity 0.5s, transform 0.5s;
+		z-index: 2;
+	}
+	&:before {
+		border-top: 1px solid rgba(255, 255, 255, 1);
+		border-bottom: 1px solid rgba(255, 255, 255, 1);
+		-webkit-transform: scale(0, 1);
+		transform: scale(0, 1);
+	}
+	&:after {
+		border-left: 1px solid rgba(255, 255, 255, 1);
+		border-right: 1px solid rgba(255, 255, 255, 1);
+		-webkit-transform: scale(1, 0);
+		transform: scale(1, 0);
+	}
+	&:hover {
+		&:before, &:after {
+			opacity: 1;
+			-webkit-transform: scale(1);
+			transform: scale(1);
+			transition: opacity 0.5s, transform 0.5s;
+		}
+	}
+}
+@mixin _transition {
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+@mixin _bg_cover {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+@mixin _bg_contain {
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+$box_shadow: 0 0 15px 0px #e8e8e8;
+
+@font-face {
+	font-family: 'iCiel Crocante';
+	src: url("../fonts/iCielCrocante.otf") format("otf");
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+$font_roboto: 'Roboto', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+$font_montserrat: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+@font-face {
+  font-family: 'font_xo_so';
+  src: url('../fonts/font_xo_so.otf');
+}
+$font_xo_so: "font_xo_so", sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+$font_tilt_warp: "Tilt Warp", sans-serif;

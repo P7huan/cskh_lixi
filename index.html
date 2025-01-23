@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HÁI LỘC ĐẦU XUÂN</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+  <audio src="./sounds/sm_spin.mp3" id="audio-spin"></audio>
+  <audio src="./sounds/sm_roller_loop.mp3" loop id="audio-roller"></audio>
+  <audio src="./sounds/sm_win.mp3" id="audio-win"></audio>
+  <div class="page">
+    <div class="main" style="background-image: url(./images/bg.png);">
+      <div class="elm elm-bottom">
+        <img src="./images/may.png" alt="Mây">
+      </div>
+      <div class="elm elm-bottom__left">
+        <img src="./images/banhchung.png" alt="Bánh chưng">
+      </div>
+      <div class="elm elm-top__left">
+        <img src="./images/phao.png" alt="Chúc mừng năm mới">
+      </div>
+      <div class="elm elm-top__right">
+        <img src="./images/text_right.png" alt="Chúc mừng năm mới">
+      </div>
+      <div class="elm elm-bottom__right">
+        <img src="./images/tao.png" alt="Táo">
+      </div>
+      <div class="main-content">
+        <div class="lixi-container">
+          <div class="lixi-elm lixi-elm-top">
+            <img src="./images/lixi_top.png" alt="Lixi">
+          </div>
+
+          <div class="lixi-wrap">
+            <div class="title">
+              <img src="./images/lixi_title.png" alt="HÁI LỘC XUÂN">
+            </div>
+            <div class="main-wheel" style="background-image: url(./images/wheel_frame.png);">
+              <div class="wheel" id="wheel">
+                <div class="voucher-wrap">
+                </div>
+              </div>
+              <button class="btn-spin" id="btn-spin">
+                <img src="./images/btn_spin.png" alt="Quay">
+              </button>
+              <!-- Đã quay
+              <div class="btn-spin" id="btn-use">
+                <img src="./images/btn_use.png" alt="Sử dụng">
+              </div> -->
+            </div>
+            <div class="desc">
+              <img src="./images/lixi_desc.png" alt="HÁI LỘC XUÂN">
+            </div>
+          </div>
+
+          <div class="lixi-elm lixi-elm-bottom">
+            <img src="./images/lixi_bottom.png" alt="Lixi">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popup popup-result" id="popup-result">
+    <div class="popup-container">
+      <div class="popup-inner">
+        <div class="popup-close">
+        </div>
+        <div class="popup-title">
+          <img src="./images/kq_title.png" alt="Lì xì ngay">
+        </div>
+        <div class="popup-result__voucher">
+          <div class="voucher-item">
+            <img src="./images/voucher-01.png" alt="Voucher">
+          </div>
+        </div>
+        <div class="popup-content">
+          <img src="./images/kq_tao.png" alt="Kết quả">
+        </div>
+        <div class="popup-note">
+          * Áp dụng voucher cho các gói chăm sóc fanpage.
+        </div>
+        <div class="popup-btn">
+          <button class="btn-contact" id="btn-contact">Liên hệ ngay để sử dụng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popup popup-phone" id="popup-phone">
+    <div class="popup-container">
+      <div class="popup-inner" >
+        <div class="wrap" style="background-image: url(./images/phone_frame.png);">
+          <div class="popup-title">
+            Nhập SĐT của bạn <br>
+            để nhận ngay lì xì
+          </div>
+          <div class="popup-input">
+            <input type="text" placeholder="VD: 0987654321">
+          </div>
+          <div class="popup-btn">
+            <button id="btn-phone">Nhận ngay</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/wheel.js"></script>
+
+<script>
+  let voucher = {
+    "1": {
+      "name": "Voucher 1",
+      "value": 100000,
+      "image": "./images/voucher-01.png",
+      "rate": 25
+    },
+    "2": {
+      "name": "Voucher 2",
+      "value": 200000,
+      "image": "./images/voucher-02.png",
+      "rate": 20
+    },
+    "3": {
+      "name": "Voucher 3",
+      "value": 300000,
+      "image": "./images/voucher-03.png",
+      "rate": 15
+    },
+    "4": {
+      "name": "Voucher 4",
+      "value": 400000,
+      "image": "./images/voucher-04.png",
+      "rate": 12
+    },
+    "5": {
+      "name": "Voucher 5",
+      "value": 500000,
+      "image": "./images/voucher-05.png",
+      "rate": 10
+    },
+    "6": {
+      "name": "Voucher 6",
+      "value": 600000,
+      "image": "./images/voucher-06.png",
+      "rate": 8
+    },
+    "7": {
+      "name": "Voucher 7",
+      "value": 700000,
+      "image": "./images/voucher-07.png",
+      "rate": 5
+    },
+    "8": {
+      "name": "Voucher 8",
+      "value": 800000,
+      "image": "./images/voucher-08.png",
+      "rate": 3
+    },
+    "9": {
+      "name": "Voucher 9",
+      "value": 1000000,
+      "image": "./images/voucher-09.png",
+      "rate": 2
+    }
+  }
+
+  // Số lần quay
+  let spinQuantity = 2;
+
+  $(document).ready(() => {
+    wheel.init(voucher, spinQuantity);
+  });
+
+</script>
+
+</html>
