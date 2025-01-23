@@ -314,18 +314,21 @@ body {
 }
 .main-content .main-wheel {
   width: 100%;
-  aspect-ratio: 3/2;
+  aspect-ratio: 352/247;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  padding: 5% 8%;
 }
 .main-content .main-wheel .wheel {
-  width: 100%;
-  height: 100%;
+  width: 88%;
+  height: 83%;
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  top: 8.5%;
+  left: 6%;
+  right: 6%;
+  bottom: 8.5%;
 }
 .main-content .main-wheel .wheel .voucher-wrap {
   width: 100%;
