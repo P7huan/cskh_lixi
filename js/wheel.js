@@ -3,6 +3,7 @@ const wheel = {
   spinning: false,
   wrapElm: null,
   repeatTimes: 50,
+  timeSpin: 6000,
   phoneRegex: /^(0)(3[2-9]|5[6-9]|7[0-6-9]|8[0-9]|9[0-9])([0-9]{7})$/,
   customerPhone: '',
 
@@ -135,12 +136,12 @@ const wheel = {
 
     // 6. Animation quay
     this.wrapElm.css({
-      transition: "transform 5s cubic-bezier(0.1, 0.7, 0.2, 1)",
+      transition: `transform ${this.timeSpin / 1000}s cubic-bezier(0.1, 0.7, 0.2, 1)`,
       transform: `translateY(-${finalPosition}px)`
     });
 
     // 7. Đợi animation hoàn thành
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, this.timeSpin));
 
     // 8. Giữ nguyên vị trí cuối
     this.wrapElm.css({ 
