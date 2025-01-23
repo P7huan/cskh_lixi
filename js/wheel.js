@@ -4,7 +4,7 @@ const wheel = {
   wrapElm: null,
   repeatTimes: 50,
   timeSpin: 6000,
-  phoneRegex: /^(0)(3[2-9]|5[6-9]|7[0-6-9]|8[0-9]|9[0-9])([0-9]{7})$/,
+  phoneRegex: /^(0)(3[2-9]|5[6-9]|7[0-7]|8[0-9]|9[0-9])([0-9]{7})$/,
   customerPhone: '',
 
   init(voucherData, spinQuantity) {
